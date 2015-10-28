@@ -1,0 +1,93 @@
+{% extends "question/base.html" %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <h4>Answer Questions</h4>
+    <p>{% blocktrans %}
+    Not yet answered questions form {{ category_count }} different categories.
+    Continue to answer and see how much your opinion matches other people.
+    {% endblocktrans %}</p>
+    <a href="{% url "question:question-list" %}" class="btn btn-md btn-primary" role="button">{% trans "Answer a Question" %}</a>
+  </div>
+  <div class="col-md-4">
+    <h4>Question Categories</h4>
+    <svg id="canvas"></svg>
+  </div>
+  <div class="col-md-4">
+    <h4>My Answers</h4>
+    <p>{% blocktrans %}
+    <p>You may want to remember what you thought earlier and make up your mind. See what you answered in earlier sessions.</p>
+    {% endblocktrans %}</p>
+    <a href="{% url "question:answer-list" %}" class="btn btn-md btn-primary">{% trans "Review your Answers" %}</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h4>Participate</h4>
+    <p>{% blocktrans %}
+    You have a question, about which you always wanted to know, how others think of it? You can submit your question and pramari will check others opinion.
+    {% endblocktrans %}</p>
+    <a href="{% url "question:submit" %}" class="btn btn-md btn-primary">{% trans "Submit a Question" %}</a>
+  </div>
+  <div class="col-md-4">
+    <h4>Community</h4>
+    <p>{% blocktrans %}
+    Find a user similar to you. The result will be based on your preferences and important questions. The more questions you answer, the more accurate this can be.
+    {% endblocktrans %}</p>
+    <a href="{% url "question:profile-list" %}" class="btn btn-md btn-primary">{% trans "List User Profiles" %}</a>
+  </div>
+  <div class="col-md-4">
+    <h4>Profile</h4>
+    <p>Edit your profile to allow better matches.</p>
+    {% if user.is_authenticated %}
+    <center><a href="{% url "question:profile-view" user.pk %}" class="btn btn-md btn-primary">Your Profile</a></center>
+    {% else %}
+    <center><a href="{% url "user:login" %}" class="btn btn-md btn-primary">Sign Up!</a></center>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "d3/d3.min.js" %}"></script>
+    <script src="{% static "question/home.js" %}"></script>
+    <script type="text/javascript">
+
+    var nodes = [
+    {x: 10, y: 50},
+    {x: 70, y: 10},
+    {x: 140, y: 50}
+];
+
+var data;
+
+d3.json("{% url "question:api-category-list" %}.json", function(error, json) {
+    if (error) return console.warn(error);
+    data = json;
+    visualizeit();
+});
+
+function visualizeit() {
+  var vis = d3.select(".canvas")
+    .attr("width", 200)
+    .attr("height", 200);
+
+  var cat = vis.selectAll("circle.nodes")
+  .append("circle")
+  .data(data)
+  .attr("cx", function(d) { return d.x; })
+  .attr("cy", function(d) { return d.y; })
+  .attr("r", "10px")
+  .attr("fill", "black");
+}
+  </script>
+{% endblock %}

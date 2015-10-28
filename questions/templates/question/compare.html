@@ -1,0 +1,44 @@
+{% extends "question/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load question %}
+
+{% block title %}
+{% blocktrans %}Benutzer {{ other.user }}Fragen {% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-2">
+    Comparing
+    <p>{{ profile.user }}</p>
+    <p>{{ profile.gender }}, {{ profile.age }}</p>
+    with:
+    <!-- Userinfo -->
+    <p>{{ other.user }}</p>
+    <p>{{ other.gender }}, {{ other.age }}</p>
+    </div>
+    <div class="col-md-8">
+    <ul>
+        {% for question in others_questions %}
+        <li>
+          <h4>{{ question.question }}</h4>
+          (You answered this question: {% user_answered user.pk question.pk %})
+          <h5>
+          {% for answer in question.user_answer %}
+            {{ answer }} - {{ object.0.user_answer }}
+            {% empty %}
+            User didn't answer (somehow)
+          {% endfor %}
+          </h5>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+<a href="{% url "question:home" %}" class="btn btn-sm btn-default">{% trans "Question Home" %}</a>
+</div>
+{% endblock %}
+

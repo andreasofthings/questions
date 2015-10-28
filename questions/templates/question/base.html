@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+pramari.de | questions
+{% endblock %}
+
+{% block breadcrumbs %}
+  <ol class="breadcrumb">
+    <li><a href="/">{% trans "Home" %}</a></li>
+    <li><a href="{% url "question:home" %} " class="active">{% trans "Question" %}</a></li>
+  </ol>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+

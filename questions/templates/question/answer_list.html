@@ -1,0 +1,27 @@
+{% extends "question/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+Alle Fragen
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<ul>
+{% for object in object_list %}
+    <li>
+    <p>You answered the question <a href="{% url "question:answer-detail" object.id %}">{{ object.question }}</a> with {{ object.user_answer }}.</p>
+    <p>{% for answer in object.acceptable_answer.all %}{{answer}}{% endfor %}, shall be acceptable answers, too.</p>
+    </li>
+{% endfor %}
+</ul>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <center><a href="{% url "question:home" %}" class="btn btn-xs btn-default">{% trans "Question Home" %}</a></center>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "question/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  {% for object in object_list %}
+    <div class="col-md-5 col-md-offset-1">
+    <a href="{% url "question:compare" object.id %}">{{ object.user }}</a>
+    </div>
+    <div class="col-md-5">
+      {% object.age %}
+    </div>
+  {% endfor %}
+</div>
+<div class="row">
+<a href="{% url "user:home" %}" class="btn btn-sm btn-default">{% trans "User" %}</a>
+</div>
+{% endblock %}
+

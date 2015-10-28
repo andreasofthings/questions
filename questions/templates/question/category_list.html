@@ -1,0 +1,22 @@
+{% extends "question/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    {% for category in object_list %}
+    <p>
+    <a href="{% url "question:category-detail" category.id %}">{{ category }}</a>
+    {{ category.question_set.count }}
+    </p>
+    {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <a href="{% url "question:category-list" %}" class="btn btn-xs btn-default">{% trans "Categories" %}</a>
+    <a href="{% url "question:home" %}" class="btn btn-xs btn-default">{% trans "Home" %}</a>
+  </div>
+</div>
+{% endblock %}

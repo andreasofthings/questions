@@ -1,0 +1,39 @@
+{% extends "question/base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+angry-planet.com | {{ object.question }}
+{% endblock %}
+
+{% block og %}
+    <meta property="fb:app_id" content="194041093392" />
+    <meta property="og:title" content="{{ object.question }}" />
+    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
+    <meta property="og:url" content="http://www.angry-planet.de{{ object.get_absolute_url }}" />
+    <meta property="og:type" content="angry-planet:question" />
+{% endblock %}
+
+{% block content %}
+<!-- -->
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <p><a href="{% url "question:profile-view" object.profile.pk %}">{{ object.profile.user.username }}</a> answered question <a href="{% url "question:question-detail" object.question.pk %}">{{ object.question }}</a> with {{ object.user_answer }}.</p>
+    <p>{% for answer in object.acceptable_answer.all %}{{answer}}{% endfor %}, shall be acceptable answers, too.</p>
+  </div>
+  <div class="col-md-5">
+   Category <a href="{% url "question:category-detail" object.question.category.id %}">{{ object.question.category }}</a>.
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <center>
+      <div class="btn-group" role="group" aria-label="...">
+      <a href="{% url "question:home" %}" class="btn btn-xs btn-default">{% trans "Home" %}</a>
+      <a href="{% url "question:answer-question" object.pk %}" class="btn btn-xs btn-default">{% trans "Answer Again" %}</a>
+      </div>
+    </center>
+  </div>
+</div>
+{% endblock %}
+

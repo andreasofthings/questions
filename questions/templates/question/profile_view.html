@@ -1,0 +1,25 @@
+{% extends "question/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    {{ object }}
+    </div>
+    <div class="col-md-6">
+      <ul>
+        {% for a in object.answers %}
+        <li>{{ a }}</li>
+        {% endfor %}
+      </ul>
+      <ul>
+        {% for key, value in object.answers_by_category %}
+        <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+

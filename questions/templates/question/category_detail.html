@@ -1,0 +1,25 @@
+{% extends "question/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h1>{{ object }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% for question in object.question_set.all %}
+      <p>
+      <a href="{{ question.get_absolute_url }}">{{ question }}</a>
+      </p>
+    {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <a href="{% url "question:category-list" %}" class="btn btn-xs btn-default">{% trans "Categories" %}</a>
+    <a href="{% url "question:home" %}" class="btn btn-xs btn-default">{% trans "Home" %}</a>
+  </div>
+</div>
+{% endblock %}
