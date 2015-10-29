@@ -1,6 +1,6 @@
 import os
 from setuptools import setup
-from social import __version__
+from questions import __version__
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
