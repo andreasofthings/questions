@@ -6,6 +6,10 @@ python:
   - "3.4"
   - "3.5"
 
+cache:
+  directories:
+      - pip_download_cache
+
 env:
   - TRAVIS="True"
 
