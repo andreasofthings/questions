@@ -33,6 +33,7 @@ setup(
     install_requires=[
         'django>=1.8.0',
         'django-braces',
+        'python-dateutil==2.3',
     ],
     dependency_links=[
         'https://github.com/aneumeier/python-django-social/tarball/master#egg=latest',
