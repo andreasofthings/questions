@@ -1,0 +1,24 @@
+sudo: false
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+
+env:
+  - TRAVIS="True"
+
+install:
+ - pip install git+https://github.com/aneumeier/questions#master
+ - pip install coveralls
+ - pip install nose
+script:
+  - nosetests --with-coverage --cover-package=social
+after_success:
+  - coveralls
+notifications:
+  webhooks:
+    urls:
+      - http://angry-planet.com/webhook/travis
+    on_success: always
+    on_failure: never

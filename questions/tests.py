@@ -20,7 +20,7 @@ except:
 from random import Random
 
 from question.models import Question, Answer, PossibleAnswer, Profile
-from .facebook import Facebook
+from social.facebook import Facebook
 
 fixtures = ['category.yaml', 'initial_data.json', ]
 
@@ -107,14 +107,16 @@ class AnonymousUrlTest(TestCase):
         response = self.client.get(reverse('question:profile-view', args=(5,)))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
-        response,
-        reverse('user:login')+'?next='+reverse('question:profile-view', args=(5,))
+            response,
+            reverse('user:login') +
+            '?next='+reverse('question:profile-view', args=(5,))
         )
         response = self.client.get(reverse('question:profile-view', args=(6,)))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
-        response,
-        reverse('user:login')+'?next='+reverse('question:profile-view', args=(6,))
+            response,
+            reverse('user:login') +
+            '?next='+reverse('question:profile-view', args=(6,))
         )
 
     def test_profile_edit(self):
@@ -127,8 +129,9 @@ class AnonymousUrlTest(TestCase):
         response = self.client.get(reverse('question:profile-edit'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
-        response,
-        reverse('user:login')+'?next='+reverse('question:profile-edit')
+            response,
+            reverse('user:login') +
+            '?next='+reverse('question:profile-edit')
         )
 
     def test_profile_list(self):
@@ -141,8 +144,9 @@ class AnonymousUrlTest(TestCase):
         response = self.client.get(reverse('question:profile-list'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
-        response,
-        reverse('user:login')+'?next='+reverse('question:profile-list')
+            response,
+            reverse('user:login') +
+            '?next='+reverse('question:profile-list')
         )
 
     def test_question_list(self):
@@ -170,7 +174,7 @@ class AnonymousUrlTest(TestCase):
             )
         self.assertEqual(response.status_code, 200)
 
-    def test_question_list(self):
+    def test_answer_list(self):
         """
         test_answer_list
         =========
@@ -179,8 +183,9 @@ class AnonymousUrlTest(TestCase):
         response = self.client.get(reverse('question:answer-list'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(
-        response,
-        reverse('user:login')+'?next='+reverse('question:answer-list')
+            response,
+            reverse('user:login') +
+            '?next='+reverse('question:answer-list')
         )
 
     def test_answer_detail(self):
@@ -399,6 +404,7 @@ class ModelTest(TestCase):
         'question.yaml',
         'initial_data.json',
     ]
+
     def setUp(self):
         """
         """
@@ -433,6 +439,7 @@ class ProfileManagerTest(TestCase):
     def test_male_percent(self):
         r = Profile.objects.male_percent()
         self.assertEquals(r, 4.0/6.0)
+
 
 class FacebookTest(TestCase):
     fixtures = [

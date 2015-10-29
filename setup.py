@@ -33,4 +33,7 @@ setup(
     install_requires=[
         'django-braces',
     ],
+    dependency_links=[
+        'https://github.com/aneumeier/python-django-social/tarball/master#egg=latest',
+    ]
 )
