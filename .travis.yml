@@ -4,6 +4,7 @@ language: python
 python:
   - "2.7"
   - "3.4"
+  - "3.5"
 
 env:
   - TRAVIS="True"
@@ -16,9 +17,3 @@ script:
   - nosetests --with-coverage --cover-package=social
 after_success:
   - coveralls
-notifications:
-  webhooks:
-    urls:
-      - http://angry-planet.com/webhook/travis
-    on_success: always
-    on_failure: never
