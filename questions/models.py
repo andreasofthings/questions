@@ -16,7 +16,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.template.defaultfilters import slugify
-from django.db.models import Q
+# from django.db.models import Q
 # from django_countries.fields import CountryField
 
 from category.models import Category
@@ -25,10 +25,10 @@ from .managers import ProfileManager
 from .managers import QuestionManager
 from .managers import AnswerManager
 
-from . import GENDER_CHOICES
-from . import LOOKFOR_CHOICES
-from . import VALUE_CHOICES
-from . import IMPORTANCE_CHOICES
+from .constants import GENDER_CHOICES
+from .constants import LOOKFOR_CHOICES
+from .constants import VALUE_CHOICES
+from .constants import IMPORTANCE_CHOICES
 
 logger = logging.getLogger(__name__)
 
