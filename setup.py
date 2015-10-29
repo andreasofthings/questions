@@ -31,6 +31,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
+        'django>=1.8.0',
         'django-braces',
     ],
     dependency_links=[
