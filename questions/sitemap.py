@@ -7,7 +7,7 @@ Question Sitemap
 
 from django.contrib.sitemaps import Sitemap
 
-from question.models import Question, Answer
+from questions.models import Question, Answer
 
 class QuestionSitemap(Sitemap):
     """
@@ -25,6 +25,7 @@ class QuestionSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.last_answer()
+
 
 class AnswerSitemap(Sitemap):
     """

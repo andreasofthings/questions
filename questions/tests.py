@@ -5,12 +5,13 @@
 """
 """
 
-from django.test import TestCase, LiveServerTestCase
-from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 from django.conf import settings
 
 settings.configure(DEBUG=True)
+
+from django.test import TestCase, LiveServerTestCase
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 import logging
 
@@ -23,7 +24,7 @@ except:
 
 from random import Random
 
-from question.models import Question, Answer, PossibleAnswer, Profile
+from questions.models import Question, Answer, PossibleAnswer, Profile
 from social.facebook import Facebook
 
 fixtures = ['category.yaml', 'initial_data.json', ]

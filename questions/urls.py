@@ -4,12 +4,12 @@ URLsconf for the :mod:`question` project
 
 from django.conf.urls import patterns, url, include
 
-from question.views import Home
-from question.views import QuestionList
-from question.views import QuestionDetail
-from question.views import AnswerList
-from question.views import AnswerDetail
-from question.views import AnswerQuestion
+from questions.views import Home
+from questions.views import QuestionList
+from questions.views import QuestionDetail
+from questions.views import AnswerList
+from questions.views import AnswerDetail
+from questions.views import AnswerQuestion
 
 urlpatterns = patterns(
     '',
@@ -21,7 +21,7 @@ urlpatterns = patterns(
     url(r'^a/(?P<pk>\d+)/$', AnswerQuestion.as_view(), name='answer-question'),
 )
 
-from question.views import ProfileList, ProfileEditView, ProfileView
+from questions.views import ProfileList, ProfileEditView, ProfileView
 
 urlpatterns += patterns(
     '',
@@ -30,7 +30,7 @@ urlpatterns += patterns(
     url(r'^u/$', ProfileList.as_view(), name='profile-list'),
 )
 
-from question.views import CategoryList, CategoryDetail
+from questions.views import CategoryList, CategoryDetail
 """ URLpattern to list categories and see contained quesitons.  """
 
 urlpatterns += patterns(
@@ -39,7 +39,7 @@ urlpatterns += patterns(
     url(r'^c/(?P<pk>\d+)/$', CategoryDetail.as_view(), name='category-detail'),
 )
 
-from question.views import Submit
+from questions.views import Submit
 """ Urlpatterns required to submit new questions.  """
 
 urlpatterns += patterns(
@@ -47,7 +47,7 @@ urlpatterns += patterns(
     url(r'^s/$', Submit.as_view(), name='submit'),
 )
 
-from question.views import Compare
+from questions.views import Compare
 """ URLpattern to compare and match user(profiles) """
 
 urlpatterns += patterns(
@@ -56,8 +56,8 @@ urlpatterns += patterns(
 )
 
 from rest_framework import routers
-from question.views import QuestionViewSet
-from question.views import CategoryViewSet
+from questions.views import QuestionViewSet
+from questions.views import CategoryViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter(trailing_slash=False)

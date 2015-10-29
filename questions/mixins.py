@@ -6,7 +6,7 @@
 """
 
 from braces.views import LoginRequiredMixin
-from question.models import Profile
+from questions.models import Profile
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 

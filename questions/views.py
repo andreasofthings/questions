@@ -100,12 +100,6 @@ class ProfileView(LoginRequiredMixin, GroupRequiredMixin, DetailView):
         """
         return Profile.objects.filter(is_public=True)
 
-class ProfileList(LoginRequiredMixin, GroupRequiredMixin, ListView):
-    model = Profile
-    group_required = u'question'
-    paginate_by = 10
-    template_name = "question/userlist.html"
-
 
 class QuestionList(LoginRequiredMixin, GroupRequiredMixin, ListView):
     """
@@ -149,15 +143,15 @@ class AnswerList(GroupRequiredMixin, ProfileRequiredMixin, ListView):
     answered which questions. This shall only be achievable by comparing two
     users.
 
-    .. seealso:: :mod:`question.views.Match`.
+    .. seealso:: :mod:`questions.views.Match`.
 
-    .. seealso:: :mod:`question.views.Compare`.
+    .. seealso:: :mod:`questions.views.Compare`.
 
     .. codeauthor:: Andreas Neumeier
     """
 
     model = Answer
-    """Based on the :mod:`question.models.Answer` model."""
+    """Based on the :mod:`questions.models.Answer` model."""
 
     group_required = u'question'
     """Requires user to belong to the 'question' group of users."""
@@ -169,10 +163,10 @@ class AnswerList(GroupRequiredMixin, ProfileRequiredMixin, ListView):
         """
         .. classmethod:: get_queryset(self)
 
-        Returns an :mod:`question.models.Answer`-queryset that is filtered for
+        Returns an :mod:`questions.models.Answer`-queryset that is filtered for
         Answers from the current user.
 
-        :rtype: A queryset for :mod:`question.models.Answer`
+        :rtype: A queryset for :mod:`questions.models.Answer`
 
         """
         return Profile.objects.get(user=self.request.user).answers
@@ -186,6 +180,7 @@ class AnswerDetail(DetailView):
 
     def get_queryset(self):
         return self.model.objects.public()
+
 
 class AnswerQuestion(GroupRequiredMixin, ProfileRequiredMixin, UpdateView):
     model = Answer
@@ -285,8 +280,8 @@ class Compare(LoginRequiredMixin, GroupRequiredMixin, ListView):
 
         :param pk: Primary Key of the user-profile to compare to.
 
-        :rtype: a list of :mod:`question.model.Question` the user has
-        :mod:`question.model.Answer` for.
+        :rtype: a list of :mod:`questions.model.Question` the user has
+        :mod:`questions.model.Answer` for.
 
         """
         other = self.kwargs['pk']
@@ -311,8 +306,8 @@ class Compare(LoginRequiredMixin, GroupRequiredMixin, ListView):
 #
 
 from rest_framework import viewsets
-from question.serializers import QuestionSerializer
-from question.serializers import CategorySerializer
+from questions.serializers import QuestionSerializer
+from questions.serializers import CategorySerializer
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

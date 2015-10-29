@@ -25,8 +25,8 @@ ProfileAdmin
 
 from django.contrib import admin
 
-from question.models import Question, Answer, PossibleAnswer, Profile
-from question.forms import QuestionAdminForm, AnswerQuestionForm
+from questions.models import Question, Answer, PossibleAnswer, Profile
+from questions.forms import QuestionAdminForm, AnswerQuestionForm
 
 
 class PossibleAnswerInline(admin.TabularInline):
