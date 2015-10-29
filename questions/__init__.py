@@ -3,16 +3,17 @@
 """
 
 __all__ = [
-'admin',
-'facebook',
-'forms',
-'managers',
-'mixins',
-'models',
-'serializers',
-'views',
-'urls',
+    'admin',
+    'forms',
+    'managers',
+    'mixins',
+    'models',
+    'serializers',
+    'views',
+    'urls',
 ]
+
+__version__='0.5'
 
 from django.utils.translation import gettext_lazy as _
 
@@ -43,5 +44,3 @@ VALUE_CHOICES = (
     ('3', '0.5',),
     ('4', '1.0',),
 )
-
-
