@@ -37,5 +37,6 @@ setup(
     ],
     dependency_links=[
         'https://github.com/aneumeier/python-django-social/tarball/master#egg=latest',
+        'https://github.com/aneumeier/category/tarball/master#egg=latest',
     ]
 )
