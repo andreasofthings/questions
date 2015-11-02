@@ -30,13 +30,13 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    dependency_links=[
+        'git+https://github.com/aneumeier/python-django-social/tarball/master#egg=latest',
+        'git+https://github.com/aneumeier/category/tarball/master#egg=latest',
+    ],
     install_requires=[
         'django>=1.8.0',
         'django-braces',
         'python-dateutil==2.3',
     ],
-    dependency_links=[
-        'https://github.com/aneumeier/python-django-social/tarball/master#egg=latest',
-        'https://github.com/aneumeier/category/tarball/master#egg=latest',
-    ]
 )
