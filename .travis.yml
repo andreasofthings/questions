@@ -16,8 +16,9 @@ env:
 install:
  - pip install git+https://github.com/aneumeier/questions#master
  - pip install coveralls
- - pip install nose
+ - pip install pytest-django
+ - python setup.py
 script:
-  - nosetests --with-coverage --cover-package=questions
+  - py.test tests
 after_success:
   - coveralls
