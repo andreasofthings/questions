@@ -4,6 +4,6 @@ from .compat import patterns, include, url
 
 
 urlpatterns = patterns(
-    ''
+    '',
     url('^$', include('questions.urls')),
 )
