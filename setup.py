@@ -35,6 +35,7 @@ setup(
         'git+https://github.com/aneumeier/category/tarball/#egg=master',
     ],
     install_requires=[
+        'userprofile==0.1.0',
         'category==0.9',
         'python-django-social>=0.1',
         'django>=1.8.0',
