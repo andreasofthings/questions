@@ -7,11 +7,11 @@
 
 from django.conf import settings
 
-settings.configure(DEBUG=True)
 
 from django.test import TestCase, LiveServerTestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+settings.configure(DEBUG=True)
 
 import logging
 

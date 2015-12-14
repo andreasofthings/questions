@@ -11,6 +11,16 @@ from questions.views import AnswerList
 from questions.views import AnswerDetail
 from questions.views import AnswerQuestion
 
+from questions.views import ProfileList, ProfileEditView, ProfileView
+from rest_framework import routers
+from questions.views import CategoryList, CategoryDetail
+from questions.views import Submit
+from questions.views import Compare
+
+from questions.apiviews import QuestionViewSet
+from questions.apiviews import CategoryViewSet
+
+
 urlpatterns = patterns(
     '',
     url(r'^$', Home.as_view(), name='home'),
@@ -21,7 +31,6 @@ urlpatterns = patterns(
     url(r'^a/(?P<pk>\d+)/$', AnswerQuestion.as_view(), name='answer-question'),
 )
 
-from questions.views import ProfileList, ProfileEditView, ProfileView
 
 urlpatterns += patterns(
     '',
@@ -30,7 +39,6 @@ urlpatterns += patterns(
     url(r'^u/$', ProfileList.as_view(), name='profile-list'),
 )
 
-from questions.views import CategoryList, CategoryDetail
 """ URLpattern to list categories and see contained quesitons.  """
 
 urlpatterns += patterns(
@@ -39,7 +47,6 @@ urlpatterns += patterns(
     url(r'^c/(?P<pk>\d+)/$', CategoryDetail.as_view(), name='category-detail'),
 )
 
-from questions.views import Submit
 """ Urlpatterns required to submit new questions.  """
 
 urlpatterns += patterns(
@@ -47,17 +54,12 @@ urlpatterns += patterns(
     url(r'^s/$', Submit.as_view(), name='submit'),
 )
 
-from questions.views import Compare
 """ URLpattern to compare and match user(profiles) """
 
 urlpatterns += patterns(
     '',
     url(r'^compare/(?P<pk>\d+)/$', Compare.as_view(), name='compare'),
 )
-
-from rest_framework import routers
-from questions.views import QuestionViewSet
-from questions.views import CategoryViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter(trailing_slash=False)

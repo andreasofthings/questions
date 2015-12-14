@@ -1,0 +1,9 @@
+include LICENSE
+recursive-include questions/templates/questions *
+recursive-include questions/templates *
+recursive-include questions/templatetags *
+recursive-include quesions/migrations *
+recursive-include questions/static *
+recursive-include questions *
+recursive-include docs/source *
+include docs/Makefile
