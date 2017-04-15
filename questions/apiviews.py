@@ -9,6 +9,8 @@
 from rest_framework import viewsets
 from questions.serializers import QuestionSerializer
 from questions.serializers import CategorySerializer
+from category.models import Category
+from .models import Question
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

@@ -51,7 +51,7 @@
     {% if user.is_authenticated %}
     <center><a href="{% url "question:profile-view" user.pk %}" class="btn btn-md btn-primary">Your Profile</a></center>
     {% else %}
-    <center><a href="{% url "user:login" %}" class="btn btn-md btn-primary">Sign Up!</a></center>
+    <center><a href="{% url "account_login" %}" class="btn btn-md btn-primary">{% trans "login" %}Sign Up!</a></center>
     {% endif %}
   </div>
 </div>

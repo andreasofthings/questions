@@ -42,7 +42,7 @@ class Profile(models.Model):
     for comparing to others.
     """
 
-    user = models.ForeignKey(User, unique=True, related_name="match_profile")
+    user = models.OneToOneField(User, related_name="match_profile")
     """Reference to :mod:`django.contrib.auth.models.User`"""
 
     is_public = models.BooleanField(default=False)
@@ -308,7 +308,7 @@ class Answer(models.Model):
     profile = models.ForeignKey(Profile)
     """The (user)profile to which this answer belongs to."""
 
-    when = models.DateTimeField(auto_now=True, auto_now_add=True)
+    when = models.DateTimeField(auto_now=True)
     """The date and time when this answer was given."""
 
     user_answer = models.ForeignKey(
