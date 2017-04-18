@@ -20,6 +20,6 @@ install:
  - pip install pytest-django
  - python setup.py install
 script:
-  - py.test tests
+    - py.test tests --ds=tests.settings
 after_success:
   - coveralls
