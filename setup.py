@@ -32,6 +32,7 @@ setup(
     ],
     install_requires=[
         'django>=1.10.0',
+        'category',
         'python-dateutil==2.3',
     ],
 )
