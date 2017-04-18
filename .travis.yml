@@ -5,6 +5,7 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
+  - "3.6"
 
 cache:
   directories:
@@ -17,7 +18,7 @@ install:
  - pip install git+https://github.com/aneumeier/questions#master
  - pip install coveralls
  - pip install pytest-django
- - python setup.py
+ - python setup.py install
 script:
   - py.test tests
 after_success:
