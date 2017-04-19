@@ -19,7 +19,7 @@ from django.template.defaultfilters import slugify
 # from django.db.models import Q
 # from django_countries.fields import CountryField
 
-from categories.models import Category
+from category.models import Category
 
 from .managers import ProfileManager
 from .managers import QuestionManager
