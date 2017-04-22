@@ -12,7 +12,6 @@ from questions.views import AnswerDetail
 from questions.views import AnswerQuestion
 
 from questions.views import ProfileList, ProfileEditView, ProfileView
-from rest_framework import routers
 from questions.views import CategoryList, CategoryDetail
 from questions.views import Submit
 from questions.views import Compare
@@ -20,6 +19,7 @@ from questions.views import Compare
 from questions.apiviews import QuestionViewSet
 from questions.apiviews import CategoryViewSet
 
+from rest_framework import routers
 
 urlpatterns = [
     url(r'^$', Home.as_view(), name='home'),

@@ -52,8 +52,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    "categories",
-    "categories.editor",
+    'category',
+    'questions',
     'tests',
 )
 
